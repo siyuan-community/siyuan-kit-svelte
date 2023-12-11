@@ -2202,7 +2202,7 @@ html {
     box-sizing: border-box
 }
 
-body {
+/* body {
     text-rendering: optimizeLegibility;
     margin: 0;
     font-family: var(--b3-font-family);
@@ -2211,11 +2211,8 @@ body {
     background-color: var(--b3-theme-background);
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
-    height: 100%;
     box-sizing: border-box;
-    max-height: 100%;
-    overflow: hidden
-}
+} */
 
 body.body--blur .toolbar {
     background: var(--b3-toolbar-blur-background)
@@ -7951,12 +7948,12 @@ html[data-theme-mode=light] .av__panel .b3-menu__item[draggable=true] {
     mix-blend-mode: darken
 }
 
-html {
+/* html {
     position: fixed;
     top: 0;
     right: 0;
     left: 0
-}
+} */
 
 .fullscreen {
     position: fixed;

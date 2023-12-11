@@ -4,15 +4,12 @@ import Button from './Button.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Example/Button',
+  title: '示例/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {
+    outline: { type: 'boolean' },
     backgroundColor: { control: 'color' },
-    // size: {
-    //   control: { type: 'select' },
-    //   options: ['small', 'medium', 'large'],
-    // },
   },
 } satisfies Meta<Button>;
 
@@ -22,14 +19,14 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Text: Story = {
   args: {
-    text: true,
+    text: false,
     label: 'Button',
   },
 };
 
-export const outline: Story = {
+export const Outline: Story = {
   args: {
-    outline: true,
+    outline: false,
     label: 'Button',
   },
 };
