@@ -10,6 +10,9 @@ const meta = {
     argTypes: {
         treeNodes: {
 
+        },
+        actions: {
+
         }
     },
 } satisfies Meta<Tree>;
@@ -23,15 +26,27 @@ export const TreeDefault: Story = {
         treeNodes: [{
             name: 'test',
             nodeId: '123',
+            icon: 'iconFolder'
         }, {
             name: 'test2',
             nodeId: '456',
+            icon: 'iconFolder',
             children: [
                 {
                     name: '333',
                     nodeId: 'test',
+                    icon: 'iconTrashcan'
                 }
             ]
-        }]
+        }],
+        actions: [
+            { type: 'file', icon: 'iconFile', title: 'file', callback: (n, e) => {
+                console.log(n, e);
+            }},
+            { type: 'test', icon: 'iconSiYuan', title: 'test', callback: (n, e) => {
+                console.log(n, e);
+            }}
+        ],
+        // expandedIds: ['456']
     },
 };

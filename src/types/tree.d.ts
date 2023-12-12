@@ -1,16 +1,17 @@
 export interface Action {
     icon: string;
     title: string;
-    callback: (event: MouseEvent) => boolean;
+    type: string;
+    callback: (node: TreeNode, event: MouseEvent) => void;
 }
 export interface TreeNode {
     name: string;
+    nodeId: string;
     depth?: number;
     children?: TreeNode[];
     icon?: string;
     title?: string;
     actions?: Action[];
-    nodeId?: string;
     notebookId?: string;
     type?: string;
     path?: string;
