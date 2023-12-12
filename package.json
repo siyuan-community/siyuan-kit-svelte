@@ -1,6 +1,7 @@
 {
   "name": "siyuan-kit-svelte",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "svelte-kit sync && svelte-package",
@@ -34,11 +35,23 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storybook": "7.6.4",
-    "svelte": "^3.54.0",
+    "svelte": "^3.59.2",
     "svelte-check": "^2.9.2",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		},
+    "./package.json": "./package.json",
+    "./Button.svelte": "./Button.svelte",
+    "./Input.svelte": "./Input.svelte",
+    "./Select.svelte": "./Select.svelte",
+    "./Switch.svelte": "./Switch.svelte",
+    "./Slider.svelte": "./Slider.svelte"
+  }
 }
