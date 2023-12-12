@@ -8,7 +8,8 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    outline: { type: 'boolean' },
+    outline: { type: 'boolean', control: 'boolean' },
+    text: { type: 'boolean', control: 'boolean' },
     backgroundColor: { control: 'color' },
   },
 } satisfies Meta<Button>;
@@ -19,34 +20,14 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Text: Story = {
   args: {
-    text: false,
+    text: true,
     label: 'Button',
   },
 };
 
 export const Outline: Story = {
   args: {
-    outline: false,
+    outline: true,
     label: 'Button',
   },
 };
-
-export const Secondary: Story = {
-  args: {
-    label: 'Button',
-  },
-};
-
-// export const Large: Story = {
-//   args: {
-//     size: 'large',
-//     label: 'Button',
-//   },
-// };
-
-// export const Small: Story = {
-//   args: {
-//     size: 'small',
-//     label: 'Button',
-//   },
-// };

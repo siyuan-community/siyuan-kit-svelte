@@ -1,27 +1,22 @@
 <script lang="ts">
-  import './button.css';
+  /**
+   * Text mode
+   */
+  export let text: boolean = false;
 
   /**
-   * Is this the principal call to action on the page?
+   * Outline mode
    */
-  export let text = false;
-
-  export let outline = false;
+  export let outline: boolean = false;
 
   /**
    * What background color to use
    */
   export let backgroundColor: string | undefined = undefined;
   /**
-   * How large should the button be?
-   */
-  // export let size: 'small' | 'medium' | 'large' = 'medium';
-  /**
    * Button contents
    */
   export let label: string = '';
-
-  // $: mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
 
   $: outlineStyle = outline ? 'b3-button--outline' : ''
 
