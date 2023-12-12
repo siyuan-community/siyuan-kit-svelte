@@ -13,6 +13,7 @@
 </script>
 
 <select
+{ ...$$props }
 class="b3-select"
 bind:value={value}
 on:change={changed}

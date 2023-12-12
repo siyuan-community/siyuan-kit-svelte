@@ -16,4 +16,4 @@
 	}
 </script>
 
-<input class="b3-slider" type="range" bind:value {min} {max} {step} on:change={changed} />
+<input { ...$$props } class="b3-slider" type="range" bind:value {min} {max} {step} on:change={changed} />

@@ -27,6 +27,7 @@
 
 <button
   type="button"
+  { ...$$props }
   class={['b3-button', outlineStyle, textStyle].join(' ')}
   {style}
   on:click

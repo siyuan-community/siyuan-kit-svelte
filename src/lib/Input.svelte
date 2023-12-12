@@ -12,4 +12,4 @@
 	});
 </script>
 
-<input class="b3-text-field" bind:this={inputElement} bind:value on:change />
+<input { ...$$props } class="b3-text-field" bind:this={inputElement} bind:value on:change />
