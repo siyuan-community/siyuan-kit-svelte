@@ -1,6 +1,6 @@
 {
   "name": "siyuan-kit-svelte",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
@@ -50,8 +50,11 @@
     "./package.json": "./package.json",
     "./Button.svelte": "./Button.svelte",
     "./Input.svelte": "./Input.svelte",
-    "./Select.svelte": "./Select.svelte",
     "./Switch.svelte": "./Switch.svelte",
-    "./Slider.svelte": "./Slider.svelte"
+    "./Select.svelte": "./Select.svelte",
+    "./Slider.svelte": "./Slider.svelte",
+    "./Icon.svelte": "./Icon.svelte",
+    "./Textarea.svelte": "./Textarea.svelte",
+    "./Tree.svelte": "./Tree.svelte"
   }
 }
