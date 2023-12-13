@@ -31,6 +31,9 @@
 			on:nodeClick
 			on:expandedChange={onExpandedChange}
 		>
+			<span slot="title" let:node>
+				<slot name="title" {node}>{node.name}</slot>
+			</span>
 			<svelte:self
 				slot="tree"
 				bind:treeNodes={node.children}
@@ -38,7 +41,11 @@
 				depth={depth + 1}
 				on:expandedChange
 				{actions}
-			/>
+			>
+				<span slot="title" let:node>
+					<slot name="title" {node}>{node.name}</slot>
+				</span>
+			</svelte:self>
 		</TreeNode>
 	{/each}
 </ul>

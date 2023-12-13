@@ -96,7 +96,7 @@
 	<Icon class="b3-list-item__graphic" icon={getIcon(node)} />
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<span class="b3-list-item__text ariaLabel" data-position="parentE" on:click={(e) => onClick(node)}
-		><slot name="title">{node.name}</slot></span
+		><slot name="title" {node}>{node.name}</slot></span
 	>
 	{#if node.count}
 		<span class="counter">${node.count}</span>`

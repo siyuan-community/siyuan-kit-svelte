@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
 import Tree from '../../lib/Tree.svelte';
+import TreeExample from './TreeExample.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -54,6 +55,49 @@ export const TreeDefault: Story = {
                 console.log(n, e);
             }}
         ],
-        expandedIds: ['456', '789']
+        expandedIds: ['456', '789'],
     },
 };
+
+export const TreeWithSlot: Story = {
+    args: {
+        treeNodes: [{
+            name: 'test',
+            nodeId: '123',
+            icon: 'iconSiYuan'
+        }, {
+            name: 'test2',
+            nodeId: '456',
+            icon: 'iconFolder',
+            children: [
+                {
+                    name: '789',
+                    nodeId: '789',
+                    icon: 'iconFolder',
+                    children: [
+                        { 
+                            name: '890',
+                            nodeId: '890',
+                            icon: 'iconSiYuan'
+                        }
+                    ]
+                }
+            ]
+        }],
+        actions: [
+            { type: 'file', icon: 'iconFile', title: 'file', callback: (n, e) => {
+                console.log(n, e);
+            }},
+            { type: 'test', icon: 'iconSiYuan', title: 'test', callback: (n, e) => {
+                console.log(n, e);
+            }}
+        ],
+        expandedIds: ['456', '789'],
+    },
+    render: (args) => ({
+        Component: TreeExample,
+        props: {
+            ...args,
+        }
+    })
+}
