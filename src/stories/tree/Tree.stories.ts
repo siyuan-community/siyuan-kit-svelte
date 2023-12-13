@@ -14,6 +14,9 @@ const meta = {
         },
         actions: {
 
+        },
+        hideArrowWhenOnlyOneLevel: {
+            type: 'boolean',
         }
     },
 } satisfies Meta<Tree>;
@@ -96,6 +99,36 @@ export const TreeWithSlot: Story = {
     },
     render: (args) => ({
         Component: TreeExample,
+        props: {
+            ...args,
+        }
+    })
+}
+
+export const TreeOnlyOneLevel: Story = {
+    args: {
+        treeNodes: [{
+            name: 'test',
+            nodeId: '123',
+            icon: 'iconSiYuan'
+        }, {
+            name: 'test2',
+            nodeId: '456',
+            icon: 'iconFolder',
+        }],
+        actions: [
+            { type: 'file', icon: 'iconFile', title: 'file', callback: (n, e) => {
+                console.log(n, e);
+            }},
+            { type: 'test', icon: 'iconSiYuan', title: 'test', callback: (n, e) => {
+                console.log(n, e);
+            }}
+        ],
+        hideArrowWhenOnlyOneLevel: true,
+        
+    },
+    render: (args) => ({
+        Component: Tree,
         props: {
             ...args,
         }

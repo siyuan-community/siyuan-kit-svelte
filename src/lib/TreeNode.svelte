@@ -11,6 +11,10 @@
 
 	export let expandedIds: string[];
 
+	export let hideActions = false;
+
+	export let hideArrow: boolean;
+
 	export let actions: Action[] | ((node: TreeNode) => Action[]) = [];
 
 	$: expanded = expandedIds.some((i) => i === node.nodeId);
@@ -74,25 +78,30 @@
 	};
 </script>
 
-<li class={['b3-list-item'].join(' ')} {...getNodeAttrs(node)}>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<span
-		style={`padding-left: ${paddingLeft + 'px'}; margin-right: 2px;`}
-		class={[
-			'b3-list-item__toggle',
-			node.type === 'backlink' || hasChild(node) ? ' b3-list-item__toggle--hl' : '',
-			hasChild(node) || node.type === 'backlink' ? '' : ' fn__hidden'
-		].join(' ')}
-		on:click={() => toggleExpanded(node.nodeId)}
-	>
-		<svg
-			data-id="${encodeURIComponent(node.name + node.depth)}"
+<li
+	class={['b3-list-item', hideActions ? 'b3-list-item--hide-action' : ''].join(' ')}
+	{...getNodeAttrs(node)}
+>
+	{#if !hideArrow}
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<span
+			style={`padding-left: ${paddingLeft + 'px'}; margin-right: 2px;`}
 			class={[
-				'b3-list-item__arrow',
-				hasChild(node) && isExpanded(node.nodeId, 3) ? 'b3-list-item__arrow--open' : ''
-			].join(' ')}><use xlink:href="#iconRight" /></svg
+				'b3-list-item__toggle',
+				node.type === 'backlink' || hasChild(node) ? ' b3-list-item__toggle--hl' : '',
+				hasChild(node) || node.type === 'backlink' ? '' : ' fn__hidden'
+			].join(' ')}
+			on:click={() => toggleExpanded(node.nodeId)}
 		>
-	</span>
+			<svg
+				data-id="${encodeURIComponent(node.name + node.depth)}"
+				class={[
+					'b3-list-item__arrow',
+					hasChild(node) && isExpanded(node.nodeId, 3) ? 'b3-list-item__arrow--open' : ''
+				].join(' ')}><use xlink:href="#iconRight" /></svg
+			>
+		</span>
+	{/if}
 	<Icon class="b3-list-item__graphic" icon={getIcon(node)} />
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<span class="b3-list-item__text ariaLabel" data-position="parentE" on:click={(e) => onClick(node)}

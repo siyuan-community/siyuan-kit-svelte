@@ -15,6 +15,10 @@
 
 	export let actions: Action[] | ((node: Node) => Action[]) = [];
 
+	export let hideActions = true;
+
+	export let hideArrowWhenOnlyOneLevel = false;
+
 	const onExpandedChange = (e: any) => {
 		expandedIds = e.detail;
 		dispatchEvent('expandedChange', e.detail);
@@ -28,6 +32,8 @@
 			bind:expandedIds
 			{depth}
 			{actions}
+			{hideActions}
+			hideArrow={depth === 0 && treeNodes.every((n) => !n.children || !n.children.length)}
 			on:nodeClick
 			on:expandedChange={onExpandedChange}
 		>
@@ -40,7 +46,9 @@
 				bind:expandedIds
 				depth={depth + 1}
 				on:expandedChange
+				{hideActions}
 				{actions}
+				{hideArrowWhenOnlyOneLevel}
 			>
 				<span slot="title" let:node>
 					<slot name="title" {node}>{node.name}</slot>
