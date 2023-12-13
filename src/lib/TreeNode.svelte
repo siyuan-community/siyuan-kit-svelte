@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import type { Action, TreeNode } from '../types/tree';
 	import Icon from './Icon.svelte';
-	import Tree from './Tree.svelte';
 
 	const dispatchEvent = createEventDispatcher();
 
@@ -16,25 +15,31 @@
 
 	$: expanded = expandedIds.some((i) => i === node.nodeId);
 
-	$: paddingLeft = (depth - 1) * 18 + 22;	
+	$: paddingLeft = (depth - 1) * 18 + 22;
 
 	$: actionList = Array.isArray(actions) ? actions : actions(node);
 
 	const isExpanded = (id: string, s: any) => {
-		console.log(s, 'id', id, expandedIds.toString(), expandedIds.some(i => i === id));
-		return expandedIds.some(i => i === id);
-	}
+		console.log(
+			s,
+			'id',
+			id,
+			expandedIds.toString(),
+			expandedIds.some((i) => i === id)
+		);
+		return expandedIds.some((i) => i === id);
+	};
 
 	const toggleExpanded = (id: string) => {
 		if (isExpanded(id, 2)) {
-			const index = expandedIds.findIndex(v => v === id);
+			const index = expandedIds.findIndex((v) => v === id);
 			expandedIds.splice(index, 1);
 			dispatchEvent('expandedChange', [...expandedIds]);
 		} else {
 			expandedIds.push(id);
 			dispatchEvent('expandedChange', [...expandedIds]);
 		}
-	}
+	};
 
 	const hasChild = (node: TreeNode) => node.children && node.children.length > 0;
 
@@ -48,6 +53,8 @@
 				return node.icon || '';
 		}
 	};
+
+	const onClick = (node: TreeNode) => dispatchEvent('nodeClick', node);
 
 	const getNodeAttrs = (node: TreeNode) => {
 		let result: { [key: string]: any } = {};
@@ -67,7 +74,8 @@
 	};
 </script>
 
-<li class={['b3-list-item', ].join(' ')} {...getNodeAttrs(node)}>
+<li class={['b3-list-item'].join(' ')} {...getNodeAttrs(node)}>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<span
 		style={`padding-left: ${paddingLeft + 'px'}; margin-right: 2px;`}
 		class={[
@@ -75,30 +83,39 @@
 			node.type === 'backlink' || hasChild(node) ? ' b3-list-item__toggle--hl' : '',
 			hasChild(node) || node.type === 'backlink' ? '' : ' fn__hidden'
 		].join(' ')}
+		on:click={() => toggleExpanded(node.nodeId)}
 	>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<svg
 			data-id="${encodeURIComponent(node.name + node.depth)}"
-			on:click={() => toggleExpanded(node.nodeId)}
-			class={['b3-list-item__arrow', (hasChild(node) && isExpanded(node.nodeId,3)) ? 'b3-list-item__arrow--open' : ''].join(
-				' '
-			)}><use xlink:href="#iconRight" /></svg
+			class={[
+				'b3-list-item__arrow',
+				hasChild(node) && isExpanded(node.nodeId, 3) ? 'b3-list-item__arrow--open' : ''
+			].join(' ')}><use xlink:href="#iconRight" /></svg
 		>
 	</span>
 	<Icon class="b3-list-item__graphic" icon={getIcon(node)} />
-	<span class="b3-list-item__text ariaLabel" data-position="parentE">{node.name}</span>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<span class="b3-list-item__text ariaLabel" data-position="parentE" on:click={(e) => onClick(node)}
+		><slot name="title">{node.name}</slot></span
+	>
 	{#if node.count}
 		<span class="counter">${node.count}</span>`
 	{/if}
 	{#if actionList.length}
-		{#each actionList as action }
+		{#each actionList as action}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span data-type={action.type} class="b3-list-item__action b3-tooltips b3-tooltips__nw" aria-label={action.title} on:click={(e) => action.callback(node, e)}>
-				<Icon icon={action.icon}></Icon>
+			<span
+				data-type={action.type}
+				class="b3-list-item__action b3-tooltips b3-tooltips__nw"
+				aria-label={action.title}
+				on:click={(e) => action.callback(node, e)}
+			>
+				<Icon icon={action.icon} />
 			</span>
 		{/each}
 	{/if}
 </li>
+
 {#if expanded}
-	<Tree bind:treeNodes={node.children} bind:expandedIds={expandedIds} depth={depth + 1} on:expandedChange {actions}/>
+	<slot name="tree" />
 {/if}

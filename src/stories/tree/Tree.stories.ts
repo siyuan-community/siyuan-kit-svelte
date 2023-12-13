@@ -26,16 +26,23 @@ export const TreeDefault: Story = {
         treeNodes: [{
             name: 'test',
             nodeId: '123',
-            icon: 'iconFolder'
+            icon: 'iconSiYuan'
         }, {
             name: 'test2',
             nodeId: '456',
             icon: 'iconFolder',
             children: [
                 {
-                    name: '333',
-                    nodeId: 'test',
-                    icon: 'iconTrashcan'
+                    name: '789',
+                    nodeId: '789',
+                    icon: 'iconFolder',
+                    children: [
+                        { 
+                            name: '890',
+                            nodeId: '890',
+                            icon: 'iconSiYuan'
+                        }
+                    ]
                 }
             ]
         }],
@@ -47,6 +54,6 @@ export const TreeDefault: Story = {
                 console.log(n, e);
             }}
         ],
-        // expandedIds: ['456']
+        expandedIds: ['456', '789']
     },
 };

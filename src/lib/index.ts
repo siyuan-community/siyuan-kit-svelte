@@ -11,4 +11,7 @@ import Icon from './Icon.svelte';
 // High level component
 import Tree from './Tree.svelte';
 
+// types -- not working yet
+// export type { TreeNode, Action } from '../types/tree'
+
 export { Button, Input, Slider, Select, Switch, Textarea, Icon, Tree };
