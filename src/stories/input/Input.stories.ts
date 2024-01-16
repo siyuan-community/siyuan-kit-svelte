@@ -4,7 +4,7 @@ import Input from '../../lib/Input.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Input',
+  title: 'BaseComponent/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {

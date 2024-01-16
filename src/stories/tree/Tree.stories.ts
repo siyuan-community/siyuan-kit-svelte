@@ -5,7 +5,7 @@ import TreeExample from './TreeExample.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-    title: '示例/Tree',
+    title: 'HighLevel/Tree',
     component: Tree,
     tags: ['autodocs'],
     argTypes: {

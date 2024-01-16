@@ -4,7 +4,7 @@ import Icon from '../../lib/Icon.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Icon',
+  title: 'BaseComponent/Icon',
   component: Icon,
   tags: ['autodocs'],
   argTypes: {

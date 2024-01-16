@@ -4,7 +4,7 @@ import Textarea from '../../lib/Textarea.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Textarea',
+  title: 'BaseComponent/Textarea',
   component: Textarea,
   tags: ['autodocs'],
   argTypes: {

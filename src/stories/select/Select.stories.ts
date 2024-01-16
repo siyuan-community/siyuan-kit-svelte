@@ -4,7 +4,7 @@ import Select from '../../lib/Select.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Select',
+  title: 'BaseComponent/Select',
   component: Select,
   tags: ['autodocs'],
   argTypes: {

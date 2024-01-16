@@ -3,7 +3,7 @@
   import DockIcon from '../../lib/DockIcon.svelte'
 
   export const meta = {
-    title: "示例/Dock",
+    title: "HighLevel/Dock",
     component: Dock
   }
 </script>

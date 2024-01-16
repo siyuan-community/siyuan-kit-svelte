@@ -4,7 +4,7 @@ import Switch from '../../lib/Switch.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Switch',
+  title: 'BaseComponent/Switch',
   component: Switch,
   tags: ['autodocs'],
   argTypes: {

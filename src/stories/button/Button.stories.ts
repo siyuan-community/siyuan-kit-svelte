@@ -4,7 +4,7 @@ import Button from '../../lib/Button.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: '示例/Button',
+  title: 'BaseComponent/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {
