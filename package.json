@@ -1,6 +1,6 @@
 {
   "name": "siyuan-kit-svelte",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
@@ -44,6 +44,7 @@
     "vite": "^4.5.1"
   },
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

@@ -22,17 +22,17 @@ const value = 123;
 <div><Button label={value}></Button></div>
 ```
 
-## TODO
+## Supported Components
 
-+ [按钮Button](/?path=/docs/BaseComponent-button--docs)
-+ [开关Switch](/?path=/docs/BaseComponent-switch--docs)
-+ [输入Input（文字、数字）](/?path=/docs/BaseComponent-input--docs)
-+ [文本域 Textarea](/?path=/docs/BaseComponent-textarea--docs)
-+ [滑块Slider](/?path=/docs/BaseComponent-slider--docs)
-+ [选择Select](/?path=/docs/BaseComponent-select--docs)
-+ 图标(SpanSvg)
++ Button
++ Switch
++ Input
++ Textarea
++ Slider
++ Select
++ Icon
++ Tree
++ Dock
++ Dialog
 
-+ 树型结构
-+ 侧边Dock（插槽：标题、按钮组、内容）
-+ Dialog（插槽）
-+ Tab
+Check storybook site [https://svelte-kit.siyuan-note.club](https://svelte-kit.siyuan-note.club) for more information.
