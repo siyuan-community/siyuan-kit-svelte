@@ -84,6 +84,7 @@
 >
 	{#if !hideArrow}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<span
 			style={`padding-left: ${paddingLeft + 'px'}; margin-right: 2px;`}
 			class={[
@@ -104,6 +105,7 @@
 	{/if}
 	<Icon class="b3-list-item__graphic" icon={getIcon(node)} />
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<span class="b3-list-item__text ariaLabel" data-position="parentE" on:click={(e) => onClick(node)}
 		><slot name="title" {node}>{node.name}</slot></span
 	>
@@ -113,6 +115,7 @@
 	{#if actionList.length}
 		{#each actionList as action}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<span
 				data-type={action.type}
 				class="b3-list-item__action b3-tooltips b3-tooltips__nw"
